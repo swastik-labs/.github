@@ -24,6 +24,9 @@ jobs:
           GH_TOKEN: ${{ secrets.BADGE_TOKEN }}
         run: |
           set -euo pipefail
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::error::BADGE_TOKEN secret is empty or not visible to this repo"; exit 1
+          fi
           mkdir -p badges
           # repo:workflow-file
           for entry in \
@@ -35,10 +38,13 @@ jobs:
             pvt-minecraft-bot:deploy.yaml
           do
             repo="${entry%%:*}"; wf="${entry##*:}"
-            run=$(gh run list -R "swastik-labs/$repo" --workflow "$wf" --branch main --limit 1 \
-                  --json status,conclusion,updatedAt --jq '.[0] // empty' || true)
+            # On an API error, keep the previous badge instead of overwriting it
+            if ! run=$(gh run list -R "swastik-labs/$repo" --workflow "$wf" --branch main --limit 1 \
+                  --json status,conclusion,updatedAt --jq '.[0] // empty'); then
+              echo "::warning::could not read runs for $repo, keeping old badge"; failed=1; continue
+            fi
             if [ -z "$run" ]; then
-              msg="unknown"; color="lightgrey"
+              msg="no deploys"; color="lightgrey"
             else
               status=$(jq -r .status <<<"$run")
               concl=$(jq -r .conclusion <<<"$run")
@@ -53,6 +59,7 @@ jobs:
               > "badges/$name.json"
             echo "$repo -> $msg"
           done
+          echo "failed=${failed:-0}" >> "$GITHUB_ENV"
 
       - name: Commit if changed
         run: |
@@ -60,3 +67,4 @@ jobs:
           git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
           git add badges
           git diff --cached --quiet || { git commit -m "chore: update status badges"; git push; }
+          if [ "$failed" = "1" ]; then echo "::error::some repos could not be read (token access?)"; exit 1; fi
