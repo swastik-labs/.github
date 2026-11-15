@@ -1,1 +1,9 @@
-{"schemaVersion":1,"label":"deploy","message":"live · Oct 12","color":"brightgreen","cacheSeconds":1800,"namedLogo":"githubactions","logoColor":"white"}
+{
+  "schemaVersion": 1,
+  "label": "deploy",
+  "message": "unknown",
+  "color": "lightgrey",
+  "cacheSeconds": 1800,
+  "namedLogo": "githubactions",
+  "logoColor": "white"
+}
