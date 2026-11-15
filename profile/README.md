@@ -23,22 +23,22 @@ Everything here runs on an old laptop at home, deployed via self-hosted GitHub A
 
 | Project | What it does | Stack | Status |
 | --- | --- | --- | --- |
-| 🎒 **Bunkers** | Attendance calculator: how many classes you can skip and still stay above your target | Vite · JS · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fbunkers.json) |
-| 💊 **Medical Tracker** | Phone-friendly tracker for medication doses and test results | FastAPI · SQLite | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fmedical-tracker.json) |
+| 🎒 **Bunkers** | Attendance calculator: how many classes you can skip and still stay above your target | Vite · JS · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fbunkers.json&cacheSeconds=1800) |
+| 💊 **Medical Tracker** | Phone-friendly tracker for medication doses and test results | FastAPI · SQLite | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fmedical-tracker.json&cacheSeconds=1800) |
 
 ### 🤖 Bots
 
 | Project | What it does | Stack | Status |
 | --- | --- | --- | --- |
-| 🛡️ **DefenderBot** | Discord community bot: moderation, automod, XP levels, tickets, giveaways | discord.py · Supabase | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fpvt-discordbot.json) |
-| ⛏️ **Minecraft Bot** | Discord bot for the Minecraft server | Python · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fpvt-minecraft-bot.json) |
+| 🛡️ **DefenderBot** | Discord community bot: moderation, automod, XP levels, tickets, giveaways | discord.py · Supabase | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fpvt-discordbot.json&cacheSeconds=1800) |
+| ⛏️ **Minecraft Bot** | Discord bot for the Minecraft server | Python · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fpvt-minecraft-bot.json&cacheSeconds=1800) |
 
 ### 🛠️ Infrastructure
 
 | Project | What it does | Stack | Status |
 | --- | --- | --- | --- |
-| 📊 **Homelab Dashboard** | "Is everything OK?" dashboard for the server, with plain-English stats | Python · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fhomelab-main.json) |
-| 🎮 **MC Panel** | Self-hosted, Aternos-style Minecraft server manager | FastAPI · Docker SDK · Alpine.js | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fmcpannel.json) |
+| 📊 **Homelab Dashboard** | "Is everything OK?" dashboard for the server, with plain-English stats | Python · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fhomelab-main.json&cacheSeconds=1800) |
+| 🎮 **MC Panel** | Self-hosted, Aternos-style Minecraft server manager | FastAPI · Docker SDK · Alpine.js | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fmcpannel.json&cacheSeconds=1800) |
 
 ## ⚙️ How It Works
 
