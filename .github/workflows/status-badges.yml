@@ -1,0 +1,62 @@
+# Writes a public shields.io "endpoint" JSON for each private repo's latest deploy,
+# so the org profile README can show live deploy badges to everyone.
+name: Status badges
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: status-badges
+
+jobs:
+  badges:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build badge JSON
+        env:
+          # Fine-grained PAT: resource owner swastik-labs, all repos, "Actions: read" + "Metadata: read"
+          GH_TOKEN: ${{ secrets.BADGE_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p badges
+          # repo:workflow-file
+          for entry in \
+            Medical-Tracker:deploy.yml \
+            Bunkers:deploy.yml \
+            Homelab-main:deploy.yml \
+            Mcpannel:deploy.yml \
+            Pvt-DiscordBot:deploy.yml \
+            pvt-minecraft-bot:deploy.yaml
+          do
+            repo="${entry%%:*}"; wf="${entry##*:}"
+            run=$(gh run list -R "swastik-labs/$repo" --workflow "$wf" --branch main --limit 1 \
+                  --json status,conclusion,updatedAt --jq '.[0] // empty' || true)
+            if [ -z "$run" ]; then
+              msg="unknown"; color="lightgrey"
+            else
+              status=$(jq -r .status <<<"$run")
+              concl=$(jq -r .conclusion <<<"$run")
+              day=$(date -u -d "$(jq -r .updatedAt <<<"$run")" +"%b %-d")
+              if [ "$status" != "completed" ]; then msg="deploying"; color="blue"
+              elif [ "$concl" = "success" ]; then msg="live · $day"; color="brightgreen"
+              else msg="failed · $day"; color="red"; fi
+            fi
+            name=$(tr '[:upper:]' '[:lower:]' <<<"$repo")
+            jq -n --arg m "$msg" --arg c "$color" \
+              '{schemaVersion:1, label:"deploy", message:$m, color:$c, cacheSeconds:1800, namedLogo:"githubactions", logoColor:"white"}' \
+              > "badges/$name.json"
+            echo "$repo -> $msg"
+          done
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add badges
+          git diff --cached --quiet || { git commit -m "chore: update status badges"; git push; }

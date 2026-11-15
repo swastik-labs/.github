@@ -17,7 +17,28 @@ Everything here runs on an old laptop at home, deployed via self-hosted GitHub A
 
 ## 🤖 What's Running
 
+> Deploy badges update every 30 minutes from each repo's latest deploy on `main`.
 
+### 🌐 Web apps
+
+| Project | What it does | Stack | Status |
+| --- | --- | --- | --- |
+| 🎒 **Bunkers** | Attendance calculator: how many classes you can skip and still stay above your target | Vite · JS · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fbunkers.json) |
+| 💊 **Medical Tracker** | Phone-friendly tracker for medication doses and test results | FastAPI · SQLite | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fmedical-tracker.json) |
+
+### 🤖 Bots
+
+| Project | What it does | Stack | Status |
+| --- | --- | --- | --- |
+| 🛡️ **DefenderBot** | Discord community bot: moderation, automod, XP levels, tickets, giveaways | discord.py · Supabase | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fpvt-discordbot.json) |
+| ⛏️ **Minecraft Bot** | Discord bot for the Minecraft server | Python · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fpvt-minecraft-bot.json) |
+
+### 🛠️ Infrastructure
+
+| Project | What it does | Stack | Status |
+| --- | --- | --- | --- |
+| 📊 **Homelab Dashboard** | "Is everything OK?" dashboard for the server, with plain-English stats | Python · Docker | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fhomelab-main.json) |
+| 🎮 **MC Panel** | Self-hosted, Aternos-style Minecraft server manager | FastAPI · Docker SDK · Alpine.js | ![deploy](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fswastik-labs%2F.github%2Fmain%2Fbadges%2Fmcpannel.json) |
 
 ## ⚙️ How It Works
 
@@ -28,12 +49,12 @@ push to repo  →  GitHub Actions  →  self-hosted runner (old laptop 💻)  �
 - 💻 **Hardware:** Lenovo laptop, Intel Core i3 (12th gen), repurposed as a home server
 - 🐧 **OS:** Ubuntu
 - 🐳 **Stack:** every service runs in its own Docker container
-- 🔁 **Deploys:** automatic on push to `main`
+- 🔁 **Deploys:** automatic on push to `main`, each followed by a health check
 
 ## 📂 Repos
 
-- **Public repos**: bots and tools anyone can use or learn from
-- Some configs stay private for security 🔒
+- Most repos are private 🔒 because they hold server config, but their deploy status is public above
+- Public repos are open for anyone to use or learn from
 
 ## 🤝 Contributing
 
