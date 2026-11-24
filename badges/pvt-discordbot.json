@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "label": "deploy",
-  "message": "live · Nov 19",
+  "message": "live · Nov 24",
   "color": "brightgreen",
   "cacheSeconds": 1800,
   "namedLogo": "githubactions",
